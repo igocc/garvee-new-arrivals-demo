@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A conversion-focused redesign concept for Garvee New Arrivals."
+    />
+    <meta name="theme-color" content="#043f6f" />
+    <meta property="og:title" content="Garvee New Arrivals — Redesign Demo" />
+    <meta
+      property="og:description"
+      content="A compact, category-led product discovery experience for new arrivals."
+    />
+    <title>Garvee New Arrivals — Redesign Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <svg class="icon-sprite" aria-hidden="true">
+      <symbol id="icon-search" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="7"></circle>
+        <path d="m20 20-4-4"></path>
+      </symbol>
+      <symbol id="icon-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="4"></circle>
+        <path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path>
+      </symbol>
+      <symbol id="icon-cart" viewBox="0 0 24 24">
+        <path d="M3 4h2l2.2 10.1a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.7L20.5 7H6"></path>
+        <circle cx="10" cy="20" r="1"></circle>
+        <circle cx="18" cy="20" r="1"></circle>
+      </symbol>
+      <symbol id="icon-arrow" viewBox="0 0 24 24">
+        <path d="m9 18 6-6-6-6"></path>
+      </symbol>
+      <symbol id="icon-info" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M12 11v6"></path>
+        <path d="M12 7.2v.1"></path>
+      </symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24">
+        <path d="m5 12 4 4 10-10"></path>
+      </symbol>
+      <symbol id="icon-close" viewBox="0 0 24 24">
+        <path d="m6 6 12 12M18 6 6 18"></path>
+      </symbol>
+      <symbol id="icon-plus" viewBox="0 0 24 24">
+        <path d="M12 5v14M5 12h14"></path>
+      </symbol>
+    </svg>
+
+    <div class="prototype-note" role="note">
+      <span>Interactive concept</span>
+      <strong>Ranking metrics are simulated for this demo.</strong>
+      <a href="#decision-notes">View design logic</a>
+    </div>
+
+    <div class="promise-bar" aria-label="Shopping benefits">
+      <span><svg><use href="#icon-check"></use></svg> Free US shipping</span>
+      <span><svg><use href="#icon-check"></use></svg> 30-day returns</span>
+      <span><svg><use href="#icon-check"></use></svg> 12-month warranty</span>
+    </div>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="https://www.garvee.com" aria-label="Garvee home">GARVEE</a>
+        <label class="search-box">
+          <svg aria-hidden="true"><use href="#icon-search"></use></svg>
+          <input id="searchInput" type="search" placeholder="Search new arrivals" autocomplete="off" />
+          <kbd>/</kbd>
+        </label>
+        <div class="header-actions">
+          <button class="icon-button" type="button" aria-label="Account">
+            <svg><use href="#icon-user"></use></svg>
+          </button>
+          <button class="cart-button" type="button" aria-label="Cart with zero items">
+            <svg><use href="#icon-cart"></use></svg>
+            <span id="cartCount">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro-shell" aria-labelledby="pageTitle">
+        <div class="intro-copy">
+          <p class="eyebrow">Added in the last 30 days</p>
+          <h1 id="pageTitle" data-pretext contenteditable="true" spellcheck="false">New arrivals, worth discovering</h1>
+          <p class="intro-lede" data-pretext contenteditable="true" spellcheck="false">
+            Skip the endless category scroll. Shop what is new, moving fast, well reviewed, or genuinely on sale.
+          </p>
+        </div>
+        <div class="intro-signals" aria-label="New arrival highlights">
+          <div>
+            <strong>204</strong>
+            <span>new this month</span>
+          </div>
+          <div>
+            <strong>42</strong>
+            <span>trending now</span>
+          </div>
+          <div>
+            <strong>100%</strong>
+            <span>available to ship</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="category-shell" aria-label="Shop new arrivals by category">
+        <div class="category-rail" id="categoryTabs" role="tablist" aria-label="Product categories"></div>
+      </section>
+
+      <section class="discovery-shell" aria-labelledby="discoveryTitle">
+        <div class="discovery-heading">
+          <div>
+            <p class="eyebrow" id="resultContext">All categories</p>
+            <h2 id="discoveryTitle">30-day movers</h2>
+            <p id="modeDescription">New products ranked by early sales velocity, conversion quality, freshness, and stock health.</p>
+          </div>
+          <button class="logic-button" id="openLogic" type="button">
+            <svg><use href="#icon-info"></use></svg>
+            How ranking works
+          </button>
+        </div>
+
+        <div class="mode-row">
+          <div class="mode-tabs" id="modeTabs" role="tablist" aria-label="Product ranking view">
+            <button class="mode-tab is-active" type="button" role="tab" aria-selected="true" data-mode="trending">30-day trending</button>
+            <button class="mode-tab" type="button" role="tab" aria-selected="false" data-mode="newest">Just in</button>
+            <button class="mode-tab" type="button" role="tab" aria-selected="false" data-mode="deals">Best deals</button>
+            <button class="mode-tab" type="button" role="tab" aria-selected="false" data-mode="rated">Highly rated</button>
+          </div>
+          <span class="result-count" id="resultCount" aria-live="polite"></span>
+        </div>
+
+        <div class="signal-strip" id="signalStrip" aria-label="Current assortment signals"></div>
+        <div class="product-grid" id="productGrid" aria-live="polite"></div>
+        <div class="empty-state" id="emptyState" hidden>
+          <h3>No new arrivals found</h3>
+          <p>Try a different category or clear your search.</p>
+          <button id="clearFilters" type="button">Show all new arrivals</button>
+        </div>
+        <div class="load-more-wrap">
+          <button class="load-more" id="loadMore" type="button">
+            Show more new arrivals
+            <svg><use href="#icon-arrow"></use></svg>
+          </button>
+        </div>
+      </section>
+
+      <section class="decision-notes" id="decision-notes" aria-labelledby="notesTitle">
+        <div>
+          <p class="eyebrow">Why this structure</p>
+          <h2 id="notesTitle">One product pool, four useful reasons to browse</h2>
+        </div>
+        <div class="decision-grid">
+          <article>
+            <span>01</span>
+            <h3>Category appears once</h3>
+            <p>Top-level tabs replace the repeated category shelf pattern. Subcategories become lightweight filters when needed.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>“Hot” has guardrails</h3>
+            <p>Velocity alone is not enough. The model includes freshness, review confidence, inventory depth, and delivery readiness.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Deals stay credible</h3>
+            <p>Discount sorting is separated from trending. Production should validate price history and minimum margin before merchandising.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Mobile starts with products</h3>
+            <p>No email gate and no oversized promotional banner. The first swipe reaches category and product discovery immediately.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand brand-footer" href="https://www.garvee.com">GARVEE</a>
+      <p>New Arrivals redesign concept. Product imagery links to the live Garvee catalog.</p>
+      <a href="https://www.garvee.com/collections/new-arrivals?filter.v.availability=true">View current page</a>
+    </footer>
+
+    <dialog class="logic-dialog" id="logicDialog" aria-labelledby="logicTitle">
+      <button class="dialog-close" id="closeLogic" type="button" aria-label="Close dialog">
+        <svg><use href="#icon-close"></use></svg>
+      </button>
+      <p class="eyebrow">Merchandising model</p>
+      <h2 id="logicTitle">30-day trending should measure quality of momentum</h2>
+      <p class="dialog-intro">
+        The demo score is directional, not a claim about live Garvee performance. In production, each input needs a governed metric definition and daily refresh.
+      </p>
+      <div class="weight-list">
+        <div><span>Sales velocity</span><strong>35%</strong><i style="--weight: 35%"></i></div>
+        <div><span>Conversion quality</span><strong>20%</strong><i style="--weight: 20%"></i></div>
+        <div><span>Freshness</span><strong>20%</strong><i style="--weight: 20%"></i></div>
+        <div><span>Review confidence</span><strong>10%</strong><i style="--weight: 10%"></i></div>
+        <div><span>Inventory health</span><strong>10%</strong><i style="--weight: 10%"></i></div>
+        <div><span>Promotion value</span><strong>5%</strong><i style="--weight: 5%"></i></div>
+      </div>
+      <div class="guardrail-box">
+        <strong>Required guardrails</strong>
+        <ul>
+          <li>Only products launched within the declared 30-day window</li>
+          <li>Exclude unavailable, restricted, and fulfillment-risk inventory</li>
+          <li>Deduplicate color or size variants at parent-product level</li>
+          <li>Cap one category’s share so broad catalogs stay discoverable</li>
+        </ul>
+      </div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
