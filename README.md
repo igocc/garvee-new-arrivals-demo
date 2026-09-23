@@ -1,40 +1,31 @@
-# Garvee New Arrivals redesign demo
+# GARVEE New Arrivals offline prototype
 
-An interactive static prototype that restructures Garvee's New Arrivals page around a single product-discovery model.
+A responsive, zero-server prototype for the redesigned GARVEE New Arrivals page.
 
-## What changes
+## Open it
 
-- Replaces the oversized promotional banner with a compact, utility-led introduction.
-- Replaces repeated vertical category shelves with one top-level category tab bar.
-- Gives shoppers four explicit discovery views: 30-day trending, just in, best deals, and highly rated.
-- Uses availability, inventory, delivery, review confidence, freshness, and promotion quality as merchandising guardrails.
-- Keeps the first mobile swipe focused on products instead of an email gate or modal.
+Double-click `index.html`. All catalog images, fonts, scripts, and layout code are local, so the page works without a network connection.
 
-## Important data note
+## Included interactions
 
-Product names, imagery, prices, links, and visible review context are adapted from the live public Garvee New Arrivals page. Sales velocity, conversion rate, inventory values, launch age, and the resulting ranking score are simulated for interaction design purposes. They are not live Garvee performance claims.
+- Three-slide featured banner with autoplay, arrows, touch swipe, dots, close, and restore
+- One-row image category rail with desktop arrows and mobile horizontal swipe
+- Trending, Newest, Best Deals, and Most Reviewed ranking tabs
+- 30 / 60 / 90 day launch filters; the control is disabled and preserved on Newest
+- Local product search, ten-item incremental loading, empty states, and result counts
+- Local cart feedback and responsive desktop/mobile footer behavior
+- Fixed 2026-09-23 snapshot date so the demo remains stable over time
 
-## Local preview
+## Data boundary
+
+Product names, images, prices, availability, inventory, and visible review data are adapted from GARVEE's public New Arrivals page snapshot. Sales velocity, category revenue, and fallback launch age are deterministic demo values for interaction testing. They are not live GARVEE performance claims.
+
+## Refresh the public snapshot
+
+From the repository root:
 
 ```bash
-python3 -m http.server 4173
+python3 sites/garvee-new-arrivals-demo/scripts/sync-public-catalog.py
 ```
 
-Then open `http://localhost:4173`.
-
-## Production ranking contract
-
-The demo uses the following directional weighting:
-
-- Sales velocity: 35%
-- Conversion quality: 20%
-- Freshness: 20%
-- Review confidence: 10%
-- Inventory health: 10%
-- Promotion value: 5%
-
-Production implementation should define each metric's authority source, timezone, grain, exclusions, update cadence, price-history rule, and fallback behavior before use.
-
-## Technology
-
-Vanilla HTML, CSS, and JavaScript. Text relayout uses [Pretext](https://github.com/chenglou/pretext) from esm.sh, with a graceful CSS fallback if the module is unavailable.
+The script rebuilds `catalog.js` and downloads up to 50 product images into `assets/products/`.

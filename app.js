@@ -1,585 +1,452 @@
-const products = [
-  {
-    id: "harrow-8ft",
-    category: "Agriculture",
-    subcategory: "Equipment",
-    name: "8 ft Heavy-Duty Drag Harrow Driveway Grader",
-    url: "https://www.garvee.com/products/garvee-garveetech-drag-harrow-driveway-grader-pho-15ey5veq",
-    image: "https://cdn.shopify.com/s/files/1/0724/6698/9369/files/61PrbY5JX9L.jpg?v=1726831553&width=600&format=webp&quality=88",
-    addedDays: 9,
-    price: 137.99,
-    compareAt: 309.99,
-    rating: 4.84,
-    reviews: 167,
-    inventory: 28,
-    sold30: 96,
-    conversion: 0.072,
-    delivery: "Fri, Sep 25",
-  },
-  {
-    id: "garden-cart-900",
-    category: "Lawn & Garden",
-    subcategory: "Garden carts",
-    name: "900 lb Heavy-Duty Steel Garden Cart Wagon",
-    url: "https://www.garvee.com/products/garvee-heavy-duty-steel-garden-cart-pho-34h8t6ln",
-    image: "https://cdn.shopify.com/s/files/1/0724/6698/9369/files/shopify_2Fai_images_2Ftmpr9ipy4bn.jpg?v=1786498112&width=600&format=webp&quality=88",
-    addedDays: 12,
-    price: 123.99,
-    compareAt: 154.99,
-    rating: 4.86,
-    reviews: 195,
-    inventory: 35,
-    sold30: 118,
-    conversion: 0.081,
-    delivery: "Fri, Sep 25",
-  },
-  {
-    id: "mini-split-24k",
-    category: "Climate",
-    subcategory: "Mini split AC",
-    name: "24,000 BTU 19 SEER2 WiFi Mini Split AC & Heater",
-    url: "https://www.garvee.com/products/garvee-24000-btu-high-efficiency-mini-mhk-375gubeb",
-    image: "https://cdn.shopify.com/s/files/1/0724/6698/9369/files/shopify_2Fai_images_2Ftmpnfzoaww.jpg?v=1780105249&width=600&format=webp&quality=88",
-    addedDays: 18,
-    price: 973.99,
-    compareAt: 1199.99,
-    rating: 4.84,
-    reviews: 147,
-    inventory: 18,
-    sold30: 74,
-    conversion: 0.048,
-    delivery: "Mon, Sep 28",
-  },
-  {
-    id: "scalloped-rug-5x7",
-    category: "Rugs",
-    subcategory: "Area rugs",
-    name: "5 × 7 ft Washable Scalloped Floral Area Rug",
-    url: "https://www.garvee.com/products/garvee-scalloped-floral-area-rug-5x7-grass-green-phk-36epa7kh",
-    image: "https://cdn.shopify.com/s/files/1/0724/6698/9369/files/cimage_b4b3bfd2e7e4b870.jpg?v=1788939575&width=600&format=webp&quality=88",
-    addedDays: 6,
-    price: 42.99,
-    compareAt: 59.99,
-    rating: 4.9,
-    reviews: 41,
-    inventory: 12,
-    sold30: 88,
-    conversion: 0.093,
-    delivery: "Fri, Sep 25",
-  },
-  {
-    id: "truck-box-36",
-    category: "Automotive",
-    subcategory: "Truck storage",
-    name: "36 in Heavy-Duty Steel Truck Bed Tool Box",
-    url: "https://www.garvee.com/products/garvee-heavy-duty-steel-truck-bed-pae-34ek4aj3",
-    image: "https://cdn.shopify.com/s/files/1/0724/6698/9369/files/fe17866966841964881_713e0f74-d802-4e4f-b9f3-c291b3db86aa.jpg?v=1787708724&width=600&format=webp&quality=88",
-    addedDays: 4,
-    price: 259.99,
-    compareAt: 299.99,
-    rating: 0,
-    reviews: 0,
-    inventory: 24,
-    sold30: 42,
-    conversion: 0.057,
-    delivery: "Sat, Sep 26",
-  },
-  {
-    id: "dog-crate-71",
-    category: "Home & Furniture",
-    subcategory: "Pet furniture",
-    name: "71 in Double Dog Crate Furniture with Storage",
-    url: "https://www.garvee.com/products/garvee-71-in-dog-crate-furniture-for-2-dogs-white-mps-33mw943x",
-    image: "https://cdn.shopify.com/s/files/1/0724/6698/9369/files/shopify_2Fai_images_2Ftmpsig18z7k.jpg?v=1787289869&width=600&format=webp&quality=88",
-    addedDays: 7,
-    price: 369.99,
-    compareAt: 429.99,
-    rating: 0,
-    reviews: 0,
-    inventory: 17,
-    sold30: 37,
-    conversion: 0.044,
-    delivery: "Mon, Sep 28",
-  },
-  {
-    id: "field-fence-14",
-    category: "Agriculture",
-    subcategory: "Fencing",
-    name: "14 Gauge 4 × 328 ft Galvanized Livestock Fence",
-    url: "https://www.garvee.com/products/garvee-14-gauge-galvanized-livestock-fence-4ft-x-328ft-ppg-35aabdec",
-    image: "https://cdn.shopify.com/s/files/1/0724/6698/9369/files/shopify_2Fai_images_2Ftmp2uhr23ne_5752b8d0-d2a0-4ce4-812e-ddd51735f76b.jpg?v=1787541867&width=600&format=webp&quality=88",
-    addedDays: 3,
-    price: 149.99,
-    compareAt: 211.99,
-    rating: 0,
-    reviews: 0,
-    inventory: 31,
-    sold30: 49,
-    conversion: 0.062,
-    delivery: "Fri, Sep 25",
-  },
-  {
-    id: "runner-rug-2x4",
-    category: "Rugs",
-    subcategory: "Runner rugs",
-    name: "2 × 4 ft Washable Braided Print Runner Rug",
-    url: "https://www.garvee.com/products/garvee-braided-print-rug-modern-boho-2x4-black-pho-104gnvmz",
-    image: "https://cdn.shopify.com/s/files/1/0724/6698/9369/files/1698322225056.jpg?v=1787896990&width=600&format=webp&quality=88",
-    addedDays: 15,
-    price: 29.99,
-    compareAt: 39.99,
-    rating: 4.71,
-    reviews: 80,
-    inventory: 6,
-    sold30: 105,
-    conversion: 0.089,
-    delivery: "Fri, Sep 25",
-  },
-  {
-    id: "planter-two-pack",
-    category: "Lawn & Garden",
-    subcategory: "Planters",
-    name: "16 in Self-Watering Tall Planter Pots, 2-Pack",
-    url: "https://www.garvee.com/products/garvee-self-watering-tall-planter-pots-ppg-34nnsbl6",
-    image: "https://cdn.shopify.com/s/files/1/0724/6698/9369/files/fe17866162614529387.jpg?v=1787732429&width=600&format=webp&quality=88",
-    addedDays: 2,
-    price: 52.99,
-    compareAt: 69.99,
-    rating: 0,
-    reviews: 0,
-    inventory: 52,
-    sold30: 31,
-    conversion: 0.051,
-    delivery: "Fri, Sep 25",
-  },
-  {
-    id: "nesting-box-10",
-    category: "Agriculture",
-    subcategory: "Poultry supplies",
-    name: "10-Compartment Roll Away Chicken Nesting Box",
-    url: "https://www.garvee.com/products/garvee-10-compartment-chicken-nesting-box-with-legs-red-pps-33a8dvrp",
-    image: "https://cdn.shopify.com/s/files/1/0724/6698/9369/files/shopify_2Fai_images_2Ftmpm7048uq5.jpg?v=1787899296&width=600&format=webp&quality=88",
-    addedDays: 10,
-    price: 223.99,
-    compareAt: 279.99,
-    rating: 4.73,
-    reviews: 11,
-    inventory: 21,
-    sold30: 44,
-    conversion: 0.058,
-    delivery: "Sat, Sep 26",
-  },
-  {
-    id: "mini-split-18k",
-    category: "Climate",
-    subcategory: "Mini split AC",
-    name: "18,000 BTU 19 SEER2 Smart Mini Split Heat Pump",
-    url: "https://www.garvee.com/products/garvee-mini-split-ac-heat-pump-mhk-375f38rq",
-    image: "https://cdn.shopify.com/s/files/1/0724/6698/9369/files/shopify_2Fai_images_2Ftmpabwkt6dm.jpg?v=1779270163&width=600&format=webp&quality=88",
-    addedDays: 20,
-    price: 746.99,
-    compareAt: 899.99,
-    rating: 4.84,
-    reviews: 147,
-    inventory: 14,
-    sold30: 61,
-    conversion: 0.042,
-    delivery: "Mon, Sep 28",
-  },
-  {
-    id: "rug-4x6-blue",
-    category: "Rugs",
-    subcategory: "Area rugs",
-    name: "4 × 6 ft Washable Botanical Scalloped Rug",
-    url: "https://www.garvee.com/products/garvee-4x6-botanical-scalloped-area-rug-phk-36h3bk6f",
-    image: "https://cdn.shopify.com/s/files/1/0724/6698/9369/files/shopify_2Fai_images_2Ftmpoosybmhs.jpg?v=1789098892&width=600&format=webp&quality=88",
-    addedDays: 5,
-    price: 26.99,
-    compareAt: 49.99,
-    rating: 4.79,
-    reviews: 63,
-    inventory: 13,
-    sold30: 73,
-    conversion: 0.087,
-    delivery: "Fri, Sep 25",
-  },
-  {
-    id: "truck-box-underbody",
-    category: "Automotive",
-    subcategory: "Truck storage",
-    name: "34.5 in Lockable Underbody Truck Tool Box",
-    url: "https://www.garvee.com/products/garvee-heavy-duty-underbody-truck-tool-pae-34e5kyfw",
-    image: "https://cdn.shopify.com/s/files/1/0724/6698/9369/files/cimage_0e48133d8927512a.jpg?v=1787708653&width=600&format=webp&quality=88",
-    addedDays: 8,
-    price: 169.99,
-    compareAt: 219.99,
-    rating: 0,
-    reviews: 0,
-    inventory: 26,
-    sold30: 35,
-    conversion: 0.049,
-    delivery: "Sat, Sep 26",
-  },
-  {
-    id: "cod-skin-treats",
-    category: "Home & Furniture",
-    subcategory: "Pet supplies",
-    name: "Natural Cod Skin Jerky Dog Treats, 6 oz",
-    url: "https://www.garvee.com/products/garvee-thin-cut-cod-skin-jerky-dog-treats-pps-33jmxcb9",
-    image: "https://cdn.shopify.com/s/files/1/0724/6698/9369/files/shopify_2Fai_images_2Ftmpdfg6foh8.jpg?v=1787297451&width=600&format=webp&quality=88",
-    addedDays: 11,
-    price: 29.99,
-    compareAt: 39.99,
-    rating: 5,
-    reviews: 2,
-    inventory: 44,
-    sold30: 28,
-    conversion: 0.066,
-    delivery: "Fri, Sep 25",
-  },
-  {
-    id: "garden-cart-500",
-    category: "Lawn & Garden",
-    subcategory: "Garden carts",
-    name: "500 lb Steel Utility Dump Cart with Folding Sides",
-    url: "https://www.garvee.com/products/garvee-heavy-duty-steel-garden-cart-pho-34h8xuur",
-    image: "https://cdn.shopify.com/s/files/1/0724/6698/9369/files/shopify_2Fai_images_2Ftmpa414y40p.jpg?v=1786498188&width=600&format=webp&quality=88",
-    addedDays: 14,
-    price: 113.99,
-    compareAt: 149.99,
-    rating: 4.86,
-    reviews: 195,
-    inventory: 30,
-    sold30: 84,
-    conversion: 0.075,
-    delivery: "Fri, Sep 25",
-  },
-  {
-    id: "dog-crate-black",
-    category: "Home & Furniture",
-    subcategory: "Pet furniture",
-    name: "71 in Double Dog Crate TV Stand, Black",
-    url: "https://www.garvee.com/products/garvee-71-in-dog-crate-furniture-for-2-dogs-black-mps-33mwjad5",
-    image: "https://cdn.shopify.com/s/files/1/0724/6698/9369/files/shopify_2Fai_images_2Ftmplh87okli.jpg?v=1787289868&width=600&format=webp&quality=88",
-    addedDays: 16,
-    price: 369.99,
-    compareAt: 459.99,
-    rating: 0,
-    reviews: 0,
-    inventory: 11,
-    sold30: 26,
-    conversion: 0.038,
-    delivery: "Mon, Sep 28",
-  },
-];
+(() => {
+  "use strict";
 
-const categoryLabels = ["All", "Agriculture", "Lawn & Garden", "Home & Furniture", "Rugs", "Automotive", "Climate"];
-
-const modeCopy = {
-  trending: {
-    title: "30-day movers",
-    description: "New products ranked by early sales velocity, conversion quality, freshness, and stock health.",
-  },
-  newest: {
-    title: "Just landed",
-    description: "The newest in-stock products first, with low-inventory risk kept visible.",
-  },
-  deals: {
-    title: "Fresh deals",
-    description: "New arrivals with the strongest verified markdowns, separated from popularity ranking.",
-  },
-  rated: {
-    title: "Early favorites",
-    description: "High-rated new products ranked with review-count confidence, not star rating alone.",
-  },
-};
-
-const state = {
-  category: "All",
-  mode: "trending",
-  query: "",
-  visible: 8,
-  cart: 0,
-};
-
-const els = {
-  categoryTabs: document.querySelector("#categoryTabs"),
-  modeTabs: document.querySelector("#modeTabs"),
-  productGrid: document.querySelector("#productGrid"),
-  resultCount: document.querySelector("#resultCount"),
-  resultContext: document.querySelector("#resultContext"),
-  discoveryTitle: document.querySelector("#discoveryTitle"),
-  modeDescription: document.querySelector("#modeDescription"),
-  signalStrip: document.querySelector("#signalStrip"),
-  searchInput: document.querySelector("#searchInput"),
-  loadMore: document.querySelector("#loadMore"),
-  emptyState: document.querySelector("#emptyState"),
-  clearFilters: document.querySelector("#clearFilters"),
-  cartCount: document.querySelector("#cartCount"),
-  toast: document.querySelector("#toast"),
-  logicDialog: document.querySelector("#logicDialog"),
-  openLogic: document.querySelector("#openLogic"),
-  closeLogic: document.querySelector("#closeLogic"),
-};
-
-const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
-
-function clamp(value, min = 0, max = 1) {
-  return Math.min(max, Math.max(min, value));
-}
-
-function discountFor(product) {
-  return Math.round((1 - product.price / product.compareAt) * 100);
-}
-
-function ratingConfidence(product) {
-  if (!product.reviews) return 0;
-  const priorRating = 4.35;
-  const priorWeight = 24;
-  return (product.rating * product.reviews + priorRating * priorWeight) / (product.reviews + priorWeight);
-}
-
-function trendScore(product) {
-  const ageAdjustedVelocity = product.sold30 / Math.max(product.addedDays, 7);
-  const velocity = clamp(ageAdjustedVelocity / 12);
-  const conversion = clamp(product.conversion / 0.09);
-  const freshness = clamp(1 - product.addedDays / 32);
-  const rating = product.reviews ? clamp((ratingConfidence(product) - 4) / 1) : 0.32;
-  const inventory = product.inventory < 7 ? product.inventory / 14 : clamp(product.inventory / 28);
-  const promotion = clamp(discountFor(product) / 45);
-  return Math.round((velocity * 0.35 + conversion * 0.2 + freshness * 0.2 + rating * 0.1 + inventory * 0.1 + promotion * 0.05) * 100);
-}
-
-function filteredProducts() {
-  const query = state.query.trim().toLowerCase();
-  const items = products.filter((product) => {
-    const categoryMatch = state.category === "All" || product.category === state.category;
-    const queryMatch = !query || `${product.name} ${product.category} ${product.subcategory}`.toLowerCase().includes(query);
-    return categoryMatch && queryMatch && product.inventory > 0 && product.addedDays <= 30;
-  });
-
-  return items.sort((a, b) => {
-    if (state.mode === "newest") return a.addedDays - b.addedDays;
-    if (state.mode === "deals") return discountFor(b) - discountFor(a) || trendScore(b) - trendScore(a);
-    if (state.mode === "rated") return ratingConfidence(b) - ratingConfidence(a) || b.reviews - a.reviews;
-    return trendScore(b) - trendScore(a);
-  });
-}
-
-function renderCategories() {
-  els.categoryTabs.innerHTML = categoryLabels
-    .map((category) => {
-      const count = category === "All" ? products.length : products.filter((product) => product.category === category).length;
-      const selected = state.category === category;
-      return `
-        <button
-          class="category-tab${selected ? " is-active" : ""}"
-          type="button"
-          role="tab"
-          aria-selected="${selected}"
-          data-category="${category}"
-        >
-          ${category}
-          <span>${count}</span>
-        </button>
-      `;
-    })
-    .join("");
-}
-
-function renderSignals(items) {
-  if (!items.length) {
-    els.signalStrip.innerHTML = "";
+  const catalog = window.GARVEE_DEMO_DATA;
+  if (!catalog || !Array.isArray(catalog.products)) {
+    document.body.innerHTML = "<p style='padding:2rem;font-family:sans-serif'>Catalog data is unavailable.</p>";
     return;
   }
 
-  const averageDiscount = Math.round(items.reduce((sum, item) => sum + discountFor(item), 0) / items.length);
-  const fastDelivery = items.filter((item) => item.delivery.includes("Fri")).length;
-  const reviewCoverage = Math.round((items.filter((item) => item.reviews > 0).length / items.length) * 100);
+  const products = catalog.products;
+  const categoryNames = [
+    "Home & Furniture",
+    "Toys & Games",
+    "Rugs",
+    "Agriculture & Forestry",
+    "Automotive",
+    "Restaurant & Food Service",
+    "Air Conditioners",
+    "Material Handling",
+    "Sports & Outdoors",
+    "Power & Hand Tools",
+    "Lawn & Garden",
+  ].sort((a, b) => (catalog.categorySales[b] || 0) - (catalog.categorySales[a] || 0));
 
-  els.signalStrip.innerHTML = `
-    <div class="signal-card"><div><span>Assortment</span><strong>${items.length} available now</strong></div><b>30-day window</b></div>
-    <div class="signal-card"><div><span>Offer depth</span><strong>${averageDiscount}% avg. markdown</strong></div><b>Price-history gate</b></div>
-    <div class="signal-card"><div><span>Decision confidence</span><strong>${reviewCoverage}% reviewed</strong></div><b>${fastDelivery} ship fastest</b></div>
-  `;
-}
+  const modeCopy = {
+    trending: {
+      title: "Trending new arrivals",
+      description: "Recently added products ranked by their last 30 days of demo sales.",
+    },
+    newest: {
+      title: "The newest of the new",
+      description: "Every available arrival ordered by its catalog launch date.",
+    },
+    deals: {
+      title: "Fresh arrivals, better prices",
+      description: "Recently added products ordered by the discount between current and compare-at price.",
+    },
+    reviews: {
+      title: "New arrivals shoppers talk about",
+      description: "Recently added products ordered by their visible lifetime review count.",
+    },
+  };
 
-function ratingMarkup(product) {
-  if (!product.reviews) return `<span class="rating-new">New · no reviews yet</span>`;
-  return `<span class="stars" aria-hidden="true">★★★★★</span><strong>${product.rating.toFixed(1)}</strong><span>(${product.reviews})</span>`;
-}
+  const state = {
+    category: "All",
+    mode: "trending",
+    days: 30,
+    visible: 10,
+    query: "",
+    cart: 0,
+  };
 
-function productCard(product, index) {
-  const discount = discountFor(product);
-  const trendingBadge = state.mode === "trending" && index < 3 ? `<span class="badge badge-hot">Trending #${index + 1}</span>` : "";
-  const newBadge = product.addedDays <= 7 ? `<span class="badge badge-new">Just landed</span>` : `<span class="badge">New ${product.addedDays}d</span>`;
-  const stockClass = product.inventory <= 8 ? "low-stock" : "";
-  const stockText = product.inventory <= 8 ? `Only ${product.inventory} left` : "In stock";
+  const els = {
+    heroShell: document.querySelector("#heroShell"),
+    heroStage: document.querySelector("#heroStage"),
+    heroDots: document.querySelector("#heroDots"),
+    heroPrev: document.querySelector("#heroPrev"),
+    heroNext: document.querySelector("#heroNext"),
+    heroClose: document.querySelector("#heroClose"),
+    heroRestore: document.querySelector("#heroRestore"),
+    categoryRail: document.querySelector("#categoryRail"),
+    categoryPrev: document.querySelector("#categoryPrev"),
+    categoryNext: document.querySelector("#categoryNext"),
+    rankingTabs: document.querySelector("#rankingTabs"),
+    timeFilter: document.querySelector("#timeFilter"),
+    productGrid: document.querySelector("#productGrid"),
+    resultEyebrow: document.querySelector("#resultEyebrow"),
+    catalogTitle: document.querySelector("#catalogTitle"),
+    catalogDescription: document.querySelector("#catalogDescription"),
+    resultCount: document.querySelector("#resultCount"),
+    showingCount: document.querySelector("#showingCount"),
+    viewMore: document.querySelector("#viewMore"),
+    endMessage: document.querySelector("#endMessage"),
+    moreWrap: document.querySelector("#moreWrap"),
+    emptyState: document.querySelector("#emptyState"),
+    resetFilters: document.querySelector("#resetFilters"),
+    searchForm: document.querySelector("#searchForm"),
+    searchInput: document.querySelector("#searchInput"),
+    mobileSearchInput: document.querySelector("#mobileSearchInput"),
+    clearSearch: document.querySelector("#clearSearch"),
+    cartButton: document.querySelector("#cartButton"),
+    cartCount: document.querySelector("#cartCount"),
+    dataNoteButton: document.querySelector("#dataNoteButton"),
+    dataDialog: document.querySelector("#dataDialog"),
+    dataDialogClose: document.querySelector("#dataDialogClose"),
+    dataDialogDone: document.querySelector("#dataDialogDone"),
+    dataDialogCopy: document.querySelector("#dataDialogCopy"),
+    snapshotDate: document.querySelector("#snapshotDate"),
+    newsletterForm: document.querySelector("#newsletterForm"),
+    toast: document.querySelector("#toast"),
+  };
 
-  return `
-    <article class="product-card">
-      <a class="product-media" href="${product.url}" target="_blank" rel="noreferrer" aria-label="View ${product.name}">
-        <img src="${product.image}" alt="${product.name}" loading="lazy" width="600" height="540" />
-        <span class="badge-stack">${trendingBadge}${newBadge}</span>
-      </a>
-      <div class="product-body">
-        <p class="product-kicker">${product.category} · ${product.subcategory}</p>
-        <h3 class="product-name"><a href="${product.url}" target="_blank" rel="noreferrer">${product.name}</a></h3>
-        <div class="rating-row">${ratingMarkup(product)}</div>
-        <div class="price-row">
-          <span class="price">${money.format(product.price)}</span>
-          <span class="compare-price">${money.format(product.compareAt)}</span>
-          <span class="discount-label">-${discount}%</span>
-        </div>
-        <p class="fulfillment"><strong class="${stockClass}">${stockText}</strong><br />Delivery from ${product.delivery}</p>
-        <button class="add-button" type="button" data-add="${product.id}">
-          <svg><use href="#icon-plus"></use></svg>
-          Quick add
-        </button>
-      </div>
-    </article>
-  `;
-}
-
-function renderProducts() {
-  const items = filteredProducts();
-  const shown = items.slice(0, state.visible);
-  const copy = modeCopy[state.mode];
-
-  els.discoveryTitle.textContent = copy.title;
-  els.modeDescription.textContent = copy.description;
-  els.resultContext.textContent = state.category === "All" ? "All categories" : state.category;
-  els.resultCount.textContent = `${items.length} products`;
-  renderSignals(items);
-
-  els.productGrid.innerHTML = shown.map(productCard).join("");
-  els.productGrid.hidden = items.length === 0;
-  els.emptyState.hidden = items.length > 0;
-  els.loadMore.hidden = items.length <= state.visible;
-}
-
-function updateModeButtons() {
-  document.querySelectorAll("[data-mode]").forEach((button) => {
-    const selected = button.dataset.mode === state.mode;
-    button.classList.toggle("is-active", selected);
-    button.setAttribute("aria-selected", String(selected));
-  });
-}
-
-function showToast(message) {
-  els.toast.textContent = message;
-  els.toast.classList.add("is-visible");
-  window.clearTimeout(showToast.timeout);
-  showToast.timeout = window.setTimeout(() => els.toast.classList.remove("is-visible"), 2200);
-}
-
-function resetVisible() {
-  state.visible = 8;
-}
-
-els.categoryTabs.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-category]");
-  if (!button) return;
-  state.category = button.dataset.category;
-  resetVisible();
-  renderCategories();
-  renderProducts();
-});
-
-els.modeTabs.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-mode]");
-  if (!button) return;
-  state.mode = button.dataset.mode;
-  resetVisible();
-  updateModeButtons();
-  renderProducts();
-});
-
-els.searchInput.addEventListener("input", (event) => {
-  state.query = event.target.value;
-  resetVisible();
-  renderProducts();
-});
-
-document.addEventListener("keydown", (event) => {
-  const target = event.target;
-  if (event.key === "/" && target.tagName !== "INPUT" && !target.isContentEditable) {
-    event.preventDefault();
-    els.searchInput.focus();
+  function escapeHtml(value) {
+    return String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
   }
-});
 
-els.productGrid.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-add]");
-  if (!button) return;
-  const product = products.find((item) => item.id === button.dataset.add);
-  state.cart += 1;
-  els.cartCount.textContent = state.cart;
-  document.querySelector(".cart-button").setAttribute("aria-label", `Cart with ${state.cart} item${state.cart === 1 ? "" : "s"}`);
-  showToast(`${product.name} added to the demo cart`);
-});
+  function discountFor(product) {
+    if (!product.compareAt || product.compareAt <= product.price) return 0;
+    return Math.round(((product.compareAt - product.price) / product.compareAt) * 100);
+  }
 
-els.loadMore.addEventListener("click", () => {
-  state.visible += 8;
-  renderProducts();
-});
+  function formatMoney(amount) {
+    return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(amount);
+  }
 
-els.clearFilters.addEventListener("click", () => {
-  state.category = "All";
-  state.query = "";
-  els.searchInput.value = "";
-  resetVisible();
-  renderCategories();
-  renderProducts();
-});
+  function launchDate(product) {
+    const snapshot = new Date(`${catalog.snapshotDate}T12:00:00`);
+    snapshot.setDate(snapshot.getDate() - product.addedDays);
+    return new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" }).format(snapshot);
+  }
 
-els.openLogic.addEventListener("click", () => els.logicDialog.showModal());
-els.closeLogic.addEventListener("click", () => els.logicDialog.close());
-els.logicDialog.addEventListener("click", (event) => {
-  const bounds = els.logicDialog.getBoundingClientRect();
-  const inside = event.clientX >= bounds.left && event.clientX <= bounds.right && event.clientY >= bounds.top && event.clientY <= bounds.bottom;
-  if (!inside) els.logicDialog.close();
-});
+  function showToast(message) {
+    window.clearTimeout(showToast.timer);
+    els.toast.textContent = message;
+    els.toast.classList.add("is-visible");
+    showToast.timer = window.setTimeout(() => els.toast.classList.remove("is-visible"), 2400);
+  }
 
-async function setupPretext() {
-  try {
-    const { prepare, layout } = await import("https://esm.sh/@chenglou/pretext");
-    await document.fonts.ready;
-    const elements = [...document.querySelectorAll("[data-pretext]")];
+  function categoryImage(category) {
+    const product = products.find((item) => item.category === category) || products[categoryNames.indexOf(category) % products.length];
+    return product ? product.image : products[0].image;
+  }
+
+  function renderCategories() {
+    const allCard = `
+      <button class="category-card category-all${state.category === "All" ? " is-active" : ""}" type="button" role="tab" aria-selected="${state.category === "All"}" data-category="All">
+        <span>All new arrivals</span>
+      </button>`;
+    const cards = categoryNames.map((category) => `
+      <button class="category-card${state.category === category ? " is-active" : ""}" type="button" role="tab" aria-selected="${state.category === category}" data-category="${escapeHtml(category)}">
+        <img src="${categoryImage(category)}" alt="" loading="lazy" />
+        <span>${escapeHtml(category)}</span>
+      </button>`).join("");
+    els.categoryRail.innerHTML = allCard + cards;
+  }
+
+  function getFilteredProducts() {
+    const query = state.query.trim().toLowerCase();
+    const filtered = products.filter((product) => {
+      const categoryMatch = state.category === "All" || product.category === state.category;
+      const timeMatch = state.mode === "newest" || product.addedDays <= state.days;
+      const queryMatch = !query || `${product.name} ${product.category} ${product.subcategory}`.toLowerCase().includes(query);
+      return categoryMatch && timeMatch && queryMatch && product.inventory > 0;
+    });
+
+    return filtered.sort((a, b) => {
+      if (state.mode === "newest") return a.addedDays - b.addedDays || b.reviews - a.reviews;
+      if (state.mode === "deals") return discountFor(b) - discountFor(a) || b.sold30 - a.sold30;
+      if (state.mode === "reviews") return b.reviews - a.reviews || b.rating - a.rating || a.addedDays - b.addedDays;
+      return b.sold30 - a.sold30 || a.addedDays - b.addedDays;
+    });
+  }
+
+  function reasonFor(product) {
+    if (state.mode === "newest") return `Added ${launchDate(product)}`;
+    if (state.mode === "deals") return discountFor(product) ? `Save ${discountFor(product)}%` : "New at current price";
+    if (state.mode === "reviews") return product.reviews ? `${product.reviews.toLocaleString()} customer reviews` : "Be the first to review";
+    return `${product.sold30.toLocaleString()} sold in the last 30 days`;
+  }
+
+  function ratingMarkup(product) {
+    if (!product.reviews) return `<span class="new-rating">New · no reviews yet</span>`;
+    return `<span class="stars" aria-hidden="true">★★★★★</span><strong>${product.rating.toFixed(1)}</strong><span>(${product.reviews})</span>`;
+  }
+
+  function productCard(product, index) {
+    const discount = discountFor(product);
+    const trendBadge = state.mode === "trending" && index < 3 ? `<span class="badge badge-hot">Trending #${index + 1}</span>` : "";
+    const dealBadge = discount >= 30 ? `<span class="badge badge-deal">Deal</span>` : "";
+    const newBadge = product.addedDays <= 7 ? `<span class="badge">Just added</span>` : "";
+    const inventory = product.inventory <= 10
+      ? `<strong class="low">Only ${product.inventory} left</strong>`
+      : `<strong>In stock</strong>`;
+
+    return `
+      <article class="product-card" style="animation-delay:${Math.min(index, 9) * 24}ms">
+        <div class="product-media">
+          <img src="${product.image}" alt="${escapeHtml(product.name)}" loading="${index < 10 ? "eager" : "lazy"}" width="720" height="720" />
+          <div class="badge-stack">${trendBadge}${dealBadge}${newBadge}</div>
+        </div>
+        <div class="product-meta">
+          <p class="product-reason">${reasonFor(product)}</p>
+          <h3 class="product-title"><button class="product-detail" type="button" data-product="${escapeHtml(product.id)}">${escapeHtml(product.name)}</button></h3>
+          <div class="rating-row" aria-label="${product.reviews ? `Rated ${product.rating} out of 5 from ${product.reviews} reviews` : "No reviews yet"}">${ratingMarkup(product)}</div>
+          <div class="price-row">
+            <span class="price">${formatMoney(product.price)}</span>
+            ${discount ? `<span class="compare-price">${formatMoney(product.compareAt)}</span><span class="discount">-${discount}%</span>` : ""}
+          </div>
+          <div class="stock-row">${inventory}<br />Estimated delivery ${escapeHtml(product.delivery)}</div>
+          <div class="card-actions">
+            <button class="add-cart" type="button" data-add="${escapeHtml(product.id)}">Add to cart</button>
+            <button class="product-link product-detail" type="button" data-product="${escapeHtml(product.id)}" aria-label="View ${escapeHtml(product.name)}"><svg><use href="#icon-arrow"></use></svg></button>
+          </div>
+        </div>
+      </article>`;
+  }
+
+  function updateControlStates() {
+    els.rankingTabs.querySelectorAll("[data-mode]").forEach((button) => {
+      const active = button.dataset.mode === state.mode;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-selected", String(active));
+    });
+    const newest = state.mode === "newest";
+    els.timeFilter.classList.toggle("is-disabled", newest);
+    els.timeFilter.setAttribute("aria-disabled", String(newest));
+    els.timeFilter.querySelectorAll("[data-days]").forEach((button) => {
+      button.classList.toggle("is-active", Number(button.dataset.days) === state.days);
+      button.disabled = newest;
+    });
+  }
+
+  function renderProducts() {
+    const items = getFilteredProducts();
+    const visible = items.slice(0, state.visible);
+    const copy = modeCopy[state.mode];
+    const categoryCopy = state.category === "All" ? "All categories" : state.category;
+    const periodCopy = state.mode === "newest" ? "All launch dates" : `Within ${state.days} days`;
+
+    els.resultEyebrow.textContent = `${categoryCopy} · ${periodCopy}`;
+    els.catalogTitle.textContent = copy.title;
+    els.catalogDescription.textContent = copy.description;
+    els.resultCount.innerHTML = `<strong>${items.length}</strong> available product${items.length === 1 ? "" : "s"}${state.query ? ` matching “${escapeHtml(state.query)}”` : ""}`;
+    els.productGrid.innerHTML = visible.map(productCard).join("");
+    els.emptyState.hidden = items.length > 0;
+    els.moreWrap.hidden = items.length === 0;
+    els.showingCount.textContent = `Showing ${visible.length} of ${items.length} products`;
+    els.viewMore.hidden = visible.length >= items.length;
+    els.endMessage.hidden = !items.length || visible.length < items.length;
+    els.clearSearch.hidden = !state.query;
+    updateControlStates();
+    renderCategories();
+  }
+
+  function resetVisible() {
+    state.visible = 10;
+  }
+
+  function setQuery(value) {
+    state.query = value;
+    els.searchInput.value = value;
+    els.mobileSearchInput.value = value;
+    resetVisible();
+    renderProducts();
+  }
+
+  const heroCandidates = [
+    products.find((item) => item.category === "Lawn & Garden"),
+    products.find((item) => item.category === "Home & Furniture"),
+    products.find((item) => item.category === "Automotive"),
+  ].filter(Boolean);
+
+  const heroSlides = heroCandidates.map((product, index) => ({
+    product,
+    kicker: ["A fresh way to grow", "Room for better living", "Built for the next project"][index],
+    title: ["New season. New reasons to get outside.", "Smart upgrades just landed.", "Fresh gear, ready when you are."][index],
+    copy: ["Discover practical garden arrivals designed to make every weekend count.", "Bring home useful pieces with a little more function and a lot less fuss.", "Explore newly added automotive essentials for workdays and weekends."][index],
+    background: ["#eee9df", "#f0e8e5", "#e7eceb"][index],
+  }));
+
+  let activeSlide = 0;
+  let heroTimer = null;
+  let touchStartX = 0;
+
+  function renderHero() {
+    els.heroStage.innerHTML = heroSlides.map((slide, index) => `
+      <article class="hero-slide${index === activeSlide ? " is-active" : ""}" style="--slide-bg:${slide.background}" aria-hidden="${index !== activeSlide}">
+        <div class="hero-copy">
+          <p class="hero-kicker">${escapeHtml(slide.kicker)}</p>
+          <h2 data-pretext>${escapeHtml(slide.title)}</h2>
+          <p>${escapeHtml(slide.copy)}</p>
+          <button class="hero-cta" type="button" data-hero-category="${escapeHtml(slide.product.category)}">Shop ${escapeHtml(slide.product.category)} <svg><use href="#icon-arrow"></use></svg></button>
+        </div>
+        <div class="hero-product"><img src="${slide.product.image}" alt="${escapeHtml(slide.product.name)}" /><span class="hero-price">${formatMoney(slide.product.price)}</span></div>
+      </article>`).join("");
+    els.heroDots.innerHTML = heroSlides.map((_, index) => `<button class="hero-dot${index === activeSlide ? " is-active" : ""}" type="button" role="tab" aria-selected="${index === activeSlide}" data-slide="${index}" aria-label="Show featured slide ${index + 1}"></button>`).join("");
+  }
+
+  function showSlide(index) {
+    activeSlide = (index + heroSlides.length) % heroSlides.length;
+    renderHero();
+  }
+
+  function startHeroTimer() {
+    window.clearInterval(heroTimer);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || els.heroShell.hidden) return;
+    heroTimer = window.setInterval(() => showSlide(activeSlide + 1), 5000);
+  }
+
+  function isHeroSuppressed() {
+    try {
+      const closedAt = Number(localStorage.getItem("garvee-new-arrivals-hero-closed"));
+      return closedAt && Date.now() - closedAt < 24 * 60 * 60 * 1000;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function setHeroVisibility(visible) {
+    els.heroShell.hidden = !visible;
+    els.heroRestore.hidden = visible;
+    if (visible) startHeroTimer();
+    else window.clearInterval(heroTimer);
+  }
+
+  els.heroPrev.addEventListener("click", () => { showSlide(activeSlide - 1); startHeroTimer(); });
+  els.heroNext.addEventListener("click", () => { showSlide(activeSlide + 1); startHeroTimer(); });
+  els.heroDots.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-slide]");
+    if (!button) return;
+    showSlide(Number(button.dataset.slide));
+    startHeroTimer();
+  });
+  els.heroStage.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-hero-category]");
+    if (!button) return;
+    state.category = button.dataset.heroCategory;
+    state.mode = "trending";
+    resetVisible();
+    renderProducts();
+    document.querySelector(".filter-sticky").scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+  els.heroShell.addEventListener("mouseenter", () => window.clearInterval(heroTimer));
+  els.heroShell.addEventListener("mouseleave", startHeroTimer);
+  els.heroShell.addEventListener("focusin", () => window.clearInterval(heroTimer));
+  els.heroShell.addEventListener("focusout", startHeroTimer);
+  els.heroStage.addEventListener("touchstart", (event) => { touchStartX = event.touches[0].clientX; }, { passive: true });
+  els.heroStage.addEventListener("touchend", (event) => {
+    const distance = event.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(distance) > 45) showSlide(activeSlide + (distance < 0 ? 1 : -1));
+    startHeroTimer();
+  }, { passive: true });
+  els.heroClose.addEventListener("click", () => {
+    try { localStorage.setItem("garvee-new-arrivals-hero-closed", String(Date.now())); } catch (_) {}
+    setHeroVisibility(false);
+  });
+  els.heroRestore.querySelector("button").addEventListener("click", () => {
+    try { localStorage.removeItem("garvee-new-arrivals-hero-closed"); } catch (_) {}
+    setHeroVisibility(true);
+  });
+
+  els.categoryRail.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-category]");
+    if (!button) return;
+    state.category = button.dataset.category;
+    resetVisible();
+    renderProducts();
+  });
+  els.categoryPrev.addEventListener("click", () => els.categoryRail.scrollBy({ left: -520, behavior: "smooth" }));
+  els.categoryNext.addEventListener("click", () => els.categoryRail.scrollBy({ left: 520, behavior: "smooth" }));
+
+  els.rankingTabs.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-mode]");
+    if (!button) return;
+    state.mode = button.dataset.mode;
+    resetVisible();
+    renderProducts();
+  });
+  els.timeFilter.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-days]");
+    if (!button || state.mode === "newest") return;
+    state.days = Number(button.dataset.days);
+    resetVisible();
+    renderProducts();
+  });
+
+  els.productGrid.addEventListener("click", (event) => {
+    const addButton = event.target.closest("[data-add]");
+    if (addButton) {
+      const product = products.find((item) => item.id === addButton.dataset.add);
+      state.cart += 1;
+      els.cartCount.textContent = state.cart;
+      els.cartButton.setAttribute("aria-label", `Cart with ${state.cart} item${state.cart === 1 ? "" : "s"}`);
+      showToast(`${product ? product.name.split(",")[0] : "Item"} added to the demo cart.`);
+      return;
+    }
+    const detailButton = event.target.closest("[data-product]");
+    if (detailButton) showToast("Product detail links are unavailable in this offline prototype.");
+  });
+
+  els.viewMore.addEventListener("click", () => {
+    state.visible += 10;
+    renderProducts();
+  });
+  els.resetFilters.addEventListener("click", () => {
+    state.category = "All";
+    state.mode = "trending";
+    state.days = 30;
+    setQuery("");
+  });
+  els.clearSearch.addEventListener("click", () => setQuery(""));
+  els.searchForm.addEventListener("submit", (event) => { event.preventDefault(); setQuery(els.searchInput.value); document.querySelector(".catalog-heading").scrollIntoView({ behavior: "smooth" }); });
+  els.searchInput.addEventListener("input", (event) => setQuery(event.target.value));
+  els.mobileSearchInput.addEventListener("input", (event) => setQuery(event.target.value));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "/" && !/input|textarea/i.test(document.activeElement.tagName)) {
+      event.preventDefault();
+      (window.innerWidth < 768 ? els.mobileSearchInput : els.searchInput).focus();
+    }
+  });
+
+  els.cartButton.addEventListener("click", () => showToast(state.cart ? `${state.cart} demo item${state.cart === 1 ? "" : "s"} in cart. Checkout is not included.` : "Your demo cart is empty."));
+  document.querySelectorAll(".offline-link").forEach((button) => button.addEventListener("click", () => showToast("This navigation is visual only in the offline prototype.")));
+
+  els.dataNoteButton.addEventListener("click", () => els.dataDialog.showModal());
+  els.dataDialogClose.addEventListener("click", () => els.dataDialog.close());
+  els.dataDialogDone.addEventListener("click", () => els.dataDialog.close());
+  els.dataDialog.addEventListener("click", (event) => { if (event.target === els.dataDialog) els.dataDialog.close(); });
+  els.dataDialogCopy.textContent = catalog.dataNote;
+  els.snapshotDate.textContent = new Intl.DateTimeFormat("en-US", { dateStyle: "long" }).format(new Date(`${catalog.snapshotDate}T12:00:00`));
+  els.newsletterForm.addEventListener("submit", (event) => { event.preventDefault(); event.currentTarget.reset(); showToast("Thanks. Signup is simulated in this offline prototype."); });
+
+  function setupPretext() {
+    const api = window.Pretext;
+    if (!api || typeof api.prepare !== "function" || typeof api.layout !== "function") return;
     const prepared = new Map();
 
     const prepareElement = (element) => {
       const style = getComputedStyle(element);
-      prepared.set(element, prepare(element.textContent.trim(), style.font));
+      prepared.set(element, api.prepare(element.textContent, style.font));
     };
-
     const relayout = () => {
-      for (const [element, handle] of prepared) {
-        const style = getComputedStyle(element);
-        const lineHeight = Number.parseFloat(style.lineHeight);
-        if (!Number.isFinite(lineHeight)) continue;
-        const { height } = layout(handle, element.clientWidth, lineHeight);
-        element.style.minHeight = `${Math.ceil(height)}px`;
-      }
+      prepared.forEach((handle, element) => {
+        const lineHeight = Number.parseFloat(getComputedStyle(element).lineHeight);
+        api.layout(handle, element.clientWidth, Number.isFinite(lineHeight) ? lineHeight : 20);
+      });
     };
 
-    elements.forEach((element) => {
+    document.querySelectorAll("[data-pretext]").forEach((element) => {
       prepareElement(element);
-      if (element.isContentEditable) {
-        new MutationObserver(() => {
-          prepareElement(element);
-          relayout();
-        }).observe(element, { characterData: true, childList: true, subtree: true });
+      if (element.contentEditable === "true") {
+        new MutationObserver(() => { prepareElement(element); relayout(); }).observe(element, { characterData: true, subtree: true, childList: true });
       }
     });
-
     new ResizeObserver(relayout).observe(document.body);
     relayout();
-  } catch (error) {
-    document.documentElement.classList.add("pretext-fallback");
   }
-}
 
-renderCategories();
-renderProducts();
-setupPretext();
+  if (window.matchMedia("(max-width: 767px)").matches) {
+    document.querySelectorAll(".footer-grid details").forEach((detail) => detail.removeAttribute("open"));
+  }
+
+  renderHero();
+  renderProducts();
+  setHeroVisibility(!isHeroSuppressed());
+  document.fonts.ready.then(setupPretext);
+})();
