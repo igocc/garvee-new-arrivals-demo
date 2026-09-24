@@ -87,9 +87,9 @@ summary:focus-visible,
 .mobile-menu, .mobile-search { display: none; }
 .primary-nav { height: 44px; display: flex; align-items: center; gap: clamp(24px, 3vw, 48px); overflow-x: auto; scrollbar-width: none; }
 .primary-nav::-webkit-scrollbar { display: none; }
-.primary-nav button { height: 100%; flex: 0 0 auto; border: 0; background: none; padding: 0; position: relative; font-size: 12px; font-weight: 750; }
-.primary-nav button.is-active { color: var(--brand); }
-.primary-nav button.is-active::after { content: ""; position: absolute; height: 2px; left: 0; right: 0; bottom: 0; background: var(--brand); }
+.primary-nav button, .primary-nav a { height: 100%; flex: 0 0 auto; border: 0; background: none; padding: 0; position: relative; display: flex; align-items: center; font-size: 12px; font-weight: 750; }
+.primary-nav button.is-active, .primary-nav a.is-active { color: var(--brand); }
+.primary-nav button.is-active::after, .primary-nav a.is-active::after { content: ""; position: absolute; height: 2px; left: 0; right: 0; bottom: 0; background: var(--brand); }
 
 .benefit-bar { background: #f7f7f6; border-bottom: 1px solid var(--soft-line); }
 .benefit-bar > div { min-height: 42px; display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; }
